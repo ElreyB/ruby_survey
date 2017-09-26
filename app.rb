@@ -21,7 +21,10 @@ get("/survey_list") do
 end
 
 post("/add_survey") do
-  Survey.create({title: params['title']})
-  @surveys = Survey.all
-  redirect 'survey_list'
+  @survey = Survey.new({title: params['title']})
+  if @survey.save
+    redirect 'survey_list'
+  else
+    erb(:errors)
+  end
 end
