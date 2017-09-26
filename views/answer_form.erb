@@ -1,4 +1,28 @@
-<form class="" action="/" method="post">
-  
+<form class="" action="/add_answer" method="post">
+  <label for="surveys">Pick a Survey</label>
+  <select id="select1" name="surveys">
+    <% if @surveys.any? %>
+      <% @surveys.each do |survey| %>
+        <option value="<%= survey.id %>"> <%= survey.title %> </option>
+        <% end %>
+    <% end %>
+  </select>
 
+    <label for="questions">Pick a Question</label>
+    <select id="select2" name="question_id">
+      <% if @questions.any? %>
+        <% @questions.each do |question| %>
+        <option value="<%= question.survey_id %>"> <%= question.query %> </option>
+        <% end %>
+      <% end %>
+    </select>
+
+    <label for="answer"> Add a Answer</label>
+    <input type="text" name="answer" class="form-control" placeholder="New Answer">
+    <button type="submit" class="btn">Add Answer</button>
 </form>
+
+
+<footer>
+  <a href="/"><button type="button" class="btn">Home</button></a>
+</footer>

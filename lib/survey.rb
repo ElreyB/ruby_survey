@@ -9,7 +9,5 @@ class Survey < ActiveRecord::Base
   def capitalizes_title
     title = self.title.split(" ")
     self.title = title.map{ |word| word.capitalize }.join(" ")
-
-
   end
 end

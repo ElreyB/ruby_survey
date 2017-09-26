@@ -33,6 +33,7 @@ end
 
 get("/answer_form") do
   @surveys = Survey.all
+  @questions = Question.all
   erb(:answer_form)
 end
 
@@ -53,6 +54,17 @@ post("/add_questions") do
     erb(:success)
   else
     @error_type = @question
+    erb(:errors)
+  end
+end
+
+post("/add_answer") do
+  question_id = Question.find(params['question_id'])
+  @answer = Answer.new({solution: params['answer'], question_id: question_id})
+  if @answer.save
+    erb(:success)
+  else
+    @error_type = @answer
     erb(:errors)
   end
 end
