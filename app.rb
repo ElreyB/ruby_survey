@@ -4,6 +4,7 @@ require("sinatra/activerecord")
 also_reload("lib/**/*.rb")
 require("./lib/survey")
 require("./lib/question")
+require("./lib/answer")
 require("pg")
 require("pry")
 
@@ -51,6 +52,7 @@ post("/add_questions") do
   survey_id = Survey.find(params['survey_id'])
   @question = Question.new({query: params['question'], survey_id: survey_id.id})
   if @question.save
+    @succes_message = "Question has been added to Survey"
     erb(:success)
   else
     @error_type = @question
@@ -60,8 +62,10 @@ end
 
 post("/add_answer") do
   question_id = Question.find(params['question_id'])
-  @answer = Answer.new({solution: params['answer'], question_id: question_id})
+  @answer = Answer.new({solution: params['answer'], question_id: question_id.id})
+  # binding.pry
   if @answer.save
+    @succes_message = "Answer has been added to Question"
     erb(:success)
   else
     @error_type = @answer
