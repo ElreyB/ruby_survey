@@ -1,4 +1,4 @@
-<form class="" action="/add_answer" method="post">
+<form class="" action="/pick_survey" method="post">
   <label for="surveys">Pick a Survey</label>
   <select id="select1" name="surveys">
     <% if @surveys.any? %>
@@ -7,14 +7,17 @@
         <% end %>
     <% end %>
   </select>
+  <button type="submit" class="btn">Pick Survey</button>
+</form>
 
-    <label for="questions">Pick a Question</label>
-    <select id="select2" name="question_id">
-      <% if @questions.any? %>
-        <% @questions.each do |question| %>
-        <option value="<%= question.survey_id %>"> <%= question.query %> </option>
-        <% end %>
+<form class="" action="/add_answer" method="post">
+  <label for="questions">Pick a Question</label>
+  <select id="select2" name="question_id">
+    <% if @questions.any? %>
+      <% @questions.each do |question| %>
+        <option value="<%= question.id %>"> <%= question.query %> </option>
       <% end %>
+    <% end %>
     </select>
 
     <label for="answer"> Add a Answer</label>

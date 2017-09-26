@@ -29,13 +29,12 @@ end
 get("/surveys/:id") do
   @survey = Survey.find(params[:id])
   @questions = @survey.questions
-  @answers = @questions[0].answers
   erb(:survey)
 end
 
 get("/answer_form") do
   @surveys = Survey.all
-  @questions = Question.all
+  @questions = []
   erb(:answer_form)
 end
 
@@ -59,6 +58,13 @@ post("/add_questions") do
     @error_type = @question
     erb(:errors)
   end
+end
+
+post("/pick_survey") do
+  @surveys = Survey.all
+  @survey = Survey.find(params['surveys'])
+  @questions = @survey.questions
+  erb(:answer_form)
 end
 
 post("/add_answer") do
