@@ -29,6 +29,7 @@ end
 get("/surveys/:id") do
   @survey = Survey.find(params[:id])
   @questions = @survey.questions
+  @answers = @questions[0].answers
   erb(:survey)
 end
 
