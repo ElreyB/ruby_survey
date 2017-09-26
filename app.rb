@@ -31,6 +31,11 @@ get("/surveys/:id") do
   erb(:survey)
 end
 
+get("/answer_form") do
+  @surveys = Survey.all
+  erb(:answer_form)
+end
+
 post("/add_survey") do
   @survey = Survey.new({title: params['title']})
   if @survey.save
