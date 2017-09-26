@@ -20,11 +20,28 @@ get("/survey_list") do
   erb(:survey_list)
 end
 
+get("/question_form") do
+  @surveys = Survey.all
+  erb(:question_form)
+end
+
 post("/add_survey") do
   @survey = Survey.new({title: params['title']})
   if @survey.save
     redirect 'survey_list'
   else
+    @error_type = @survey
+    erb(:errors)
+  end
+end
+
+post("/add_questions") do
+  survey_id = Survey.find(params['survey_id'])
+  @question = Question.new({query: params['question'], survey_id: survey_id})
+  if @question.save
+    erb(:success)
+  else
+    @error_type = @question
     erb(:errors)
   end
 end

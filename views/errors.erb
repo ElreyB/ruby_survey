@@ -1,6 +1,6 @@
 <h3>Oops there were some errors:</h3>
 <ul>
-  <% @survey.errors().full_messages().each() do |message| %>
+  <% @error_type.errors().full_messages().each() do |message| %>
     <li><%= message %></li>
   <% end %>
 </ul>

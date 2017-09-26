@@ -1,0 +1,15 @@
+<form class="" action="/add_questions" method="post">
+  <label for="survey_list">Select Survey</label>
+  <select class="" name="survey_id" type="text">
+    <% @surveys.each do |survey| %>
+    <option value="<%= survey.id %>"> <%= survey.title %> </option>
+    <% end %>
+  </select>
+  <label for="question">Add Question to Survey</label>
+  <input type="text" name="question" class="form-control" placeholder="New Question">
+  <button type="submit" name="button" class="btn">Add Question</button>
+</form>
+
+<footer>
+  <a href="/"><button type="button" class="btn">Home</button></a>
+</footer>
