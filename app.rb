@@ -27,7 +27,6 @@ end
 
 get("/surveys/:id") do
   @survey = Survey.find(params[:id])
-  binding.pry
   @questions = @survey.questions
   erb(:survey)
 end
