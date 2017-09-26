@@ -8,6 +8,18 @@
 //   } ).trigger( 'change' );
 // });
 
+$(document).ready(function(){
+  $('.0').removeClass("hide");
+  $('#0').click(function(){
+    $('.0').addClass("hide");
+    $('.1').removeClass("hide");
+  });
+  $('#2').click(function(){
+    $('.1').addClass("hide");
+  });
+});
+
+
 
 // ruby first select box effects second select box
 // https://stackoverflow.com/questions/10570904/use-jquery-to-change-a-second-select-list-based-on-the-first-select-list-option

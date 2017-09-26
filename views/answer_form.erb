@@ -1,4 +1,4 @@
-<form class="" action="/pick_survey" method="post">
+<form class="survey-picker" action="/pick_survey" method="post">
   <label for="surveys">Pick a Survey</label>
   <select id="select1" name="surveys">
     <% if @surveys.any? %>
@@ -7,7 +7,7 @@
         <% end %>
     <% end %>
   </select>
-  <button type="submit" class="btn">Pick Survey</button>
+  <button type="submit" class="btn" id="survey-picker-button">Pick Survey</button>
 </form>
 
 <form class="" action="/add_answer" method="post">

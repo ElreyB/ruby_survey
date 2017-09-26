@@ -1,8 +1,10 @@
 <h3> <%= @survey.title %> </h3>
 
 <% if @questions.any? %>
+<% counter = 0 %>
+<form class="" action="index.html" method="post">
   <% @questions.each do |question| %>
-  <form class="" action="index.html" method="post">
+    <div class="<%= counter %> hide">
     <%= question.query %>
     <% if question.answers.any? %>
         <% question.answers.each do |answer| %>
@@ -13,9 +15,14 @@
             </label>
           </div>
         <% end %>
-      </form>
     <% end %>
+    <button type="button" name="button" class="btn" id="<%= counter %>">Next Question</button>
+    <% counter += 1 %>
+  </div>
   <% end %>
+</form>
+
+
 <% else %>
   <p>There are currently no questions for this survey.</p>
 <% end %>
