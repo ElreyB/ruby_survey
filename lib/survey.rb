@@ -3,6 +3,7 @@ class Survey < ActiveRecord::Base
 
   before_save(:capitalizes_title)
 
+  validates(:title, {:presence => true, :length => {:maximum => 25, :minimum => 5}})
   private
 
   def capitalizes_title
