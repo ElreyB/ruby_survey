@@ -25,6 +25,13 @@ get("/question_form") do
   erb(:question_form)
 end
 
+get("/surveys/:id") do
+  @survey = Survey.find(params[:id])
+  binding.pry
+  @questions = @survey.questions
+  erb(:survey)
+end
+
 post("/add_survey") do
   @survey = Survey.new({title: params['title']})
   if @survey.save
@@ -37,7 +44,7 @@ end
 
 post("/add_questions") do
   survey_id = Survey.find(params['survey_id'])
-  @question = Question.new({query: params['question'], survey_id: survey_id})
+  @question = Question.new({query: params['question'], survey_id: survey_id.id})
   if @question.save
     erb(:success)
   else

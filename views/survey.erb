@@ -1,0 +1,17 @@
+<h3> <%= @survey.title %> </h3>
+
+<% if @questions.any? %>
+
+  <ul>
+    <% @questions.each do |question| %>
+      <li> <%= question.query %> </li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <p>There are currently no questions for this survey.</p>
+<% end %>
+
+<footer>
+  <a href="/"><button type="button" class="btn">Home</button></a>
+</footer>
